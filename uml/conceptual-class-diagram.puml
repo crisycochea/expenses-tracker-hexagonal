@@ -1,0 +1,14 @@
+@startuml
+class Category {
+    name: unique
+    description
+}
+
+class Expense {
+    description
+    amount
+    date
+}
+
+Category "0"--"n" Expense
+@enduml
