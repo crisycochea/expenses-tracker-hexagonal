@@ -1,5 +1,5 @@
 {
-  "name": "express-typescript-service-skeleton",
+  "name": "Expenses Tracker Clean",
   "version": "1.0.0",
   "description": "Skeleton for new typescript services based on hexagonal architecture",
   "main": "src/index.js",
@@ -15,10 +15,6 @@
     "build:clean": "rimraf dist; exit 0",
     "build:tsc": "tsc -p tsconfig.prod.json"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AlbertHernandez/express-typescript-service-skeleton.git"
-  },
   "keywords": [
     "typescript",
     "express",
@@ -30,10 +26,6 @@
     "node": ">=18.0.0",
     "npm": ">=9.3.0"
   },
-  "bugs": {
-    "url": "https://github.com/AlbertHernandez/express-typescript-service-skeleton/issues"
-  },
-  "homepage": "https://github.com/AlbertHernandez/express-typescript-service-skeleton#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
