@@ -4,6 +4,14 @@ import { categoryController } from "./dependencies";
 
 const categoryRouter = express.Router();
 
-categoryRouter.get("/", categoryController.list.bind(categoryController));
+categoryRouter.get(
+  "/",
+  categoryController.listCategories.bind(categoryController)
+);
+
+categoryRouter.get(
+  "/:id",
+  categoryController.getCategoryById.bind(categoryController)
+);
 
 export { categoryRouter };

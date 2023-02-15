@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
     "noImplicitAny": true,
     "moduleResolution": "node",
-    "sourceMap": false,
+    "sourceMap": true,
     "rootDir": ".",
     "strict": true,
     "noEmit": false,
@@ -18,5 +19,7 @@
     "tests/**/**.ts",
     "playground/**/**.ts",
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
