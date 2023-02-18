@@ -19,11 +19,25 @@ export class InmemoryCategoryRepository implements CategoryRepository {
   async listCategories(): Promise<Category[]> {
     return categories;
   }
+
   async getCategoryById(id: number): Promise<Category> {
-    const category = categories.find((category) => category.id === id);
-    if (category === undefined) {
+    const categoryIndex = this.findIndexCategoryById(id);
+    return categories[categoryIndex];
+  }
+
+  async editCategory(category: Category): Promise<Category> {
+    const categoryIndex = this.findIndexCategoryById(category.id);
+    categories[categoryIndex] = category;
+    return categories[categoryIndex];
+  }
+
+  private findIndexCategoryById(id: number) {
+    const categoryIndex = categories.findIndex(
+      (category) => category.id === id
+    );
+    if (categoryIndex === -1) {
       throw new ObjectNotFound();
     }
-    return category;
+    return categoryIndex;
   }
 }
