@@ -34,6 +34,21 @@ export class InmemoryCategoryRepository implements CategoryRepository {
     return categories[categoryIndex];
   }
 
+  async createCategory(category: Category): Promise<Category> {
+    assert(category.id !== null);
+
+    const categoryIds = categories.map((category) =>
+      category.id ? category.id : 0
+    );
+    const maxCategoryId = Math.max(...categoryIds);
+    const newCategory = new Category(
+      maxCategoryId + 1,
+      category.name,
+      category.description
+    );
+    categories.push(newCategory);
+    return newCategory;
+  }
   private findIndexCategoryById(id: number) {
     const categoryIndex = categories.findIndex(
       (category) => category.id === id

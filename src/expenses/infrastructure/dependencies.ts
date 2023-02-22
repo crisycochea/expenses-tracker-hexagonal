@@ -1,3 +1,4 @@
+import { CreateCategoryUseCase } from "../application/useCases/createCategoryUseCase";
 import { EditCategoryUseCase } from "../application/useCases/editCategoryUseCase";
 import { GetCategoryByIdUseCase } from "../application/useCases/getCategoryByIdUseCase";
 import { ListCategoriesUseCase } from "../application/useCases/listCategoriesUseCase";
@@ -15,9 +16,13 @@ export const getCategoryByIdUseCase = new GetCategoryByIdUseCase(
 export const editCategoryUseCase = new EditCategoryUseCase(
   inMemoryCategoryRepository
 );
+export const createCategoryUseCase = new CreateCategoryUseCase(
+  inMemoryCategoryRepository
+);
 
 export const categoryController = new CategoryController(
   listCategoriesUseCase,
   getCategoryByIdUseCase,
-  editCategoryUseCase
+  editCategoryUseCase,
+  createCategoryUseCase
 );

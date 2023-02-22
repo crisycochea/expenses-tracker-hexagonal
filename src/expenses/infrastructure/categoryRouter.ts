@@ -26,4 +26,10 @@ categoryRouter.put(
   categoryController.editCategory.bind(categoryController)
 );
 
+categoryRouter.post(
+  "/",
+  categoryBodyValidator,
+  categoryController.createCategory.bind(categoryController)
+);
+
 export { categoryRouter };

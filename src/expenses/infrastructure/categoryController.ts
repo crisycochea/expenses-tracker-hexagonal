@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { validationResult } from "express-validator";
 
 import { validate } from "../../shared/infrastructure/express/dectorators";
+import { CreateCategoryUseCase } from "../application/useCases/createCategoryUseCase";
 import { EditCategoryUseCase } from "../application/useCases/editCategoryUseCase";
 import { GetCategoryByIdUseCase } from "../application/useCases/getCategoryByIdUseCase";
 import { ListCategoriesUseCase } from "../application/useCases/listCategoriesUseCase";
@@ -11,7 +11,8 @@ export class CategoryController {
   constructor(
     private readonly listCategoriesUseCase: ListCategoriesUseCase,
     private readonly getCategoryByIdUseCase: GetCategoryByIdUseCase,
-    private readonly editCategoryUseCase: EditCategoryUseCase
+    private readonly editCategoryUseCase: EditCategoryUseCase,
+    private readonly createCategoryUseCase: CreateCategoryUseCase
   ) {}
 
   @validate
@@ -41,6 +42,22 @@ export class CategoryController {
     try {
       const category = await this.getCategoryByIdUseCase.run(categoryId);
       res.status(200).send(category);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  @validate
+  async createCategory(req: Request, res: Response, next: NextFunction) {
+    const categoryId = parseInt(req.params.id);
+    const category = new Category(
+      categoryId,
+      req.body.name,
+      req.body.description
+    );
+    try {
+      const newCategory = await this.createCategoryUseCase.run(category);
+      res.status(200).send(newCategory);
     } catch (e) {
       next(e);
     }
