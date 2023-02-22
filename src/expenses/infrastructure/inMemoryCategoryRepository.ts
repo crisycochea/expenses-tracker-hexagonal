@@ -1,3 +1,5 @@
+import assert from "assert";
+
 import { ObjectNotFound } from "../application/exceptions/objectNotFound";
 import { CategoryRepository } from "../domain/interfaces/categoryRepository";
 import { Category } from "../domain/models/category";
@@ -26,6 +28,7 @@ export class InmemoryCategoryRepository implements CategoryRepository {
   }
 
   async editCategory(category: Category): Promise<Category> {
+    assert(category.id !== null);
     const categoryIndex = this.findIndexCategoryById(category.id);
     categories[categoryIndex] = category;
     return categories[categoryIndex];

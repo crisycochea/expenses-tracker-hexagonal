@@ -1,6 +1,6 @@
 export class Category {
   constructor(
-    readonly id: number,
+    readonly id: number | null,
     readonly name: string,
     readonly description: string | null
   ) {}

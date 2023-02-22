@@ -11,6 +11,6 @@ export function errorHandler(
   if (error instanceof ObjectNotFound) {
     res.status(404).send({ error: error.message });
   } else {
-    next("Unexpected error");
+    next(error);
   }
 }
