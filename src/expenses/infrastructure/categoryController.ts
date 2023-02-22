@@ -37,10 +37,6 @@ export class CategoryController {
 
   @validate
   async getCategoryById(req: Request, res: Response, next: NextFunction) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
     const categoryId = parseInt(req.params.id);
     try {
       const category = await this.getCategoryByIdUseCase.run(categoryId);
