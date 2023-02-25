@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node dist/src/main.js",
-    "start:dev": "tsnd --respawn src/main.ts",
+    "start:dev": "tsnd --respawn src/main.ts ",
+    "debug": "tsnd --inspect --respawn src/main.ts",
     "test": "npm run test:unit",
     "test:unit": "NODE_ENV=test jest --coverage",
     "prepare": "husky install",
@@ -54,6 +55,7 @@
   "dependencies": {
     "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-validator": "^6.15.0"
   }
 }
